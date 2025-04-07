@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        a: [ red, blue ]
+        a: [ "cafe.babe", "dead.beef" ]
         b: [ apple, orange ]
       max-parallel: 5
     outputs:
@@ -19,7 +19,7 @@ jobs:
         shell: bash
         id: test
         run: |
-          echo "output=${{ matrix.a }}-${{ matrix.b }}" >> ${GITHUB_OUTPUT}
+          echo "${{ matrix.a }}=${{ matrix.b }}" >> ${GITHUB_OUTPUT}
 
   attest:
     name: Generate artifact attestation
