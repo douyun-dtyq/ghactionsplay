@@ -1,3 +1,5 @@
+name: ceshi2
+
 on:
   workflow_dispatch:
 
@@ -19,7 +21,7 @@ jobs:
         uses: docker/build-push-action@v5.0.0
         with:
           context: .
-          dockerfile: Dockerfile.empty
+          file: Dockerfile.empty
           push: true
           tags: ghcr.io/douyun-dtyq/ghactionsplay:empty
       - name: Attest
