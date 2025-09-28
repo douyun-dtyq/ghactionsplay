@@ -38,7 +38,7 @@ jobs:
       - name: Show outputs
         shell: cat {0}
         run: |
-          ${{ steps.attest.outputs }}
+          ${{ toJson(steps.attest.outputs) }}
       - name: Setup tmate session
         uses: mxschmitt/action-tmate@v3
         with:
