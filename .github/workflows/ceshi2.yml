@@ -35,6 +35,7 @@ jobs:
         with:
           subject-name: ghcr.io/douyun-dtyq/ghactionsplay
           subject-digest: ${{ steps.push.outputs.digest }}
+          push-to-registry: true
       - name: Show outputs
         shell: cat {0}
         run: |
