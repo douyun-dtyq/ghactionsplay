@@ -1,0 +1,37 @@
+on:
+  workflow_dispatch:
+
+jobs:
+  test-attest:
+    name: test attest
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: douyun-dtyq
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build and push image
+        id: push
+        uses: docker/build-push-action@v5.0.0
+        with:
+          context: .
+          dockerfile: Dockerfile.empty
+          push: true
+          tags: ghcr.io/douyun-dtyq/ghactionsplay:empty
+      - name: Attest
+        uses: actions/attest-build-provenance@v2
+        id: attest
+        with:
+          subject-name: ghcr.io/douyun-dtyq/ghactionsplay
+          subject-digest: ${{ steps.push.outputs.digest }}
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v3
+        with:
+          tmate-server-host: ${{ secrets.TMATE_SERVER_HOST }}
+          tmate-server-port: 2222
+          tmate-server-rsa-fingerprint: ${{ secrets.TMATE_SERVER_RSA_FINGERPRINT }}
+          tmate-server-ecdsa-fingerprint: ${{ secrets.TMATE_SERVER_ECDSA_FINGERPRINT }}
