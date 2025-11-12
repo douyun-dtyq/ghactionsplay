@@ -1,0 +1,36 @@
+name: echo
+
+on:
+  workflow_dispatch:
+
+jobs:
+  echo:
+    name: echo
+    runs-on: ubuntu-latest
+    steps:
+      - shell: cat {0}
+        run: |
+          github
+          {{ toJSON(github) }}
+          env
+          {{ toJSON(env) }}
+          vars
+          {{ toJSON(vars) }}
+          job
+          {{ toJSON(job) }}
+          jobs
+          {{ toJSON(jobs) }}
+          runner
+          {{ toJSON(runner) }}
+          secrets
+          {{ toJSON(secrets) }}
+          secrets
+          {{ toJSON(secrets) }}
+          strategy
+          {{ toJSON(strategy) }}
+          matrix
+          {{ toJSON(matrix) }}
+          needs
+          {{ toJSON(needs) }}
+          inputs
+          {{ toJSON(inputs) }}
