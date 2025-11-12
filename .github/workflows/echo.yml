@@ -19,7 +19,7 @@ jobs:
           job
           ${{ toJSON(job) }}
           jobs
-          ${{ toJSON(jobs) }}
+          $x{{ toJSON(jobs) }}
           runner
           ${{ toJSON(runner) }}
           secrets
