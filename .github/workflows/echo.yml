@@ -11,26 +11,26 @@ jobs:
       - shell: cat {0}
         run: |
           github
-          {{ toJSON(github) }}
+          ${{ toJSON(github) }}
           env
-          {{ toJSON(env) }}
+          ${{ toJSON(env) }}
           vars
-          {{ toJSON(vars) }}
+          ${{ toJSON(vars) }}
           job
-          {{ toJSON(job) }}
+          ${{ toJSON(job) }}
           jobs
-          {{ toJSON(jobs) }}
+          ${{ toJSON(jobs) }}
           runner
-          {{ toJSON(runner) }}
+          ${{ toJSON(runner) }}
           secrets
-          {{ toJSON(secrets) }}
+          ${{ toJSON(secrets) }}
           secrets
-          {{ toJSON(secrets) }}
+          ${{ toJSON(secrets) }}
           strategy
-          {{ toJSON(strategy) }}
+          ${{ toJSON(strategy) }}
           matrix
-          {{ toJSON(matrix) }}
+          ${{ toJSON(matrix) }}
           needs
-          {{ toJSON(needs) }}
+          ${{ toJSON(needs) }}
           inputs
-          {{ toJSON(inputs) }}
+          ${{ toJSON(inputs) }}
